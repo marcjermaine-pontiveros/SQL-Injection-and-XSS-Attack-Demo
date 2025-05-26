@@ -160,7 +160,7 @@ def get_comments():
     cur = conn.cursor()
     cur.execute('SELECT id, user_id, content FROM `comment` ORDER BY id DESC')
     rows = cur.fetchall()
-    conn.commit() # This commit is actually not necessary for a SELECT query.
+    # Removed unnecessary conn.commit() as SELECT queries do not require it.
     conn.close()
 
     return map(lambda row: {'id': row[0], 'user_id': row[1], 'content': row[2]}, rows)
